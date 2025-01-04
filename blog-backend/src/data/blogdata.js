@@ -1,4 +1,4 @@
-export const blogdata = [
+module.exports = [
   {
     title: "Mount Fuji",
     location: "Japan",
