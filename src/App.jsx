@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Headerfile";
 import Entry from "./components/Entry";
-import { blogdata } from "./assets/blogdata";
+import { blogApi } from "../blog-backend/services/api";
+export function App() {
+  const [blogs, setBlogs] = useState([]);
 
-export default function App() {
-  const blogelements = blogdata.map((item) => {
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try{
+        const data = await blogApi.getAllPosts();
+        setBlogs(data);
+      } catch (error) {
+        console.error('Error fetching blog data', error);
+      }
+    };
+    fetchBlogData();
+  }, []);
+
+  const blogelements = blogs.map((item) => {
     return (
       <Entry
         key={item.title}
