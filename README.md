@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 # How to run
 ## Frontend
 ```bash
-mpm install
+npm install
 npm run dev
 ```
 ## Backend
