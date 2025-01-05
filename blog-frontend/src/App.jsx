@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Headerfile";
 import Entry from "./components/Entry";
-import { blogApi } from "../../blog-backend/services/api";
+import { blogApi } from "../services/api";
 export function App() {
   const [blogs, setBlogs] = useState([]);
 
