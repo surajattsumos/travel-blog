@@ -1,0 +1,44 @@
+services:
+  blog-frontend:
+    build:
+      context: ./blog-frontend
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./blog-frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+
+  blog-backend:
+    build:
+      context: ./blog-backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./blog-backend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: sh -c "./scripts/init.sh"
+    depends_on:
+      mongodb:
+        condition: service_started
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/blogdb
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+
+networks:
+  default:
+    name: blog-network
