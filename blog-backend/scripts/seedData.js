@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const blogdata = require('../src/data/blogdata');
 
 async function seedDatabase() {
-  const uri = "mongodb://mongodb:27017/blogdb";
+  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/blogdb";
   const client = new MongoClient(uri);
 
   try {
