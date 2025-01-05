@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 async function createDatabase() {
-  const uri = "mongodb://localhost:27017";
+  const uri = "mongodb://mongodb:27017/blogdb";
   const client = new MongoClient(uri);
 
   try {

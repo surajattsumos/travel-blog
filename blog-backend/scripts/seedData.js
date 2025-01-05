@@ -1,10 +1,8 @@
-require('module-alias/register');
-
 const { MongoClient } = require('mongodb');
 const blogdata = require('../src/data/blogdata');
 
 async function seedDatabase() {
-  const uri = "mongodb://localhost:27017/blogdb"; 
+  const uri = "mongodb://mongodb:27017/blogdb";
   const client = new MongoClient(uri);
 
   try {
