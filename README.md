@@ -11,15 +11,14 @@ Currently, two official plugins are available:
 ## case using docker
 1. setup environment
    - frontend
-    .env
     ```
-    VITE_API_URL=http://blog-backend:5173/api/posts
+    cd blog-frontend
+    cp .env.sample .env
     ```
    - backend
-    .env
     ```
-    MONGODB_URI=mongodb://mongodb:27017/blogdb
-    PORT=5001
+    cd blog-backend
+    cp .env.sample .env
     ```
 2. Build docker images
 ```bash
